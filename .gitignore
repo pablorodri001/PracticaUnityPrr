@@ -7,15 +7,10 @@
 \pard\pardeftab720\partightenfactor0
 
 \f0\fs32 \cf2 \cb3 \expnd0\expndtw0\kerning0
-\outl0\strokewidth0 \strokec2 # =============== #\cb1 \
-\cb3 # Unity generated #\cb1 \
-\cb3 # =============== #\cb1 \
-\cb3 Temp/\cb1 \
+Temp/\cb1 \
 \cb3 Library/\cb1 \
 \
-\cb3 # ===================================== #\cb1 \
-\cb3 # Visual Studio / MonoDevelop generated #\cb1 \
-\cb3 # ===================================== #\cb1 \
+\
 \cb3 ExportedObj/\cb1 \
 \cb3 obj/\cb1 \
 \cb3 *.svd\cb1 \
@@ -28,9 +23,7 @@
 \cb3 *.unityproj\cb1 \
 \cb3 *.booproj\cb1 \
 \
-\cb3 # ============ #\cb1 \
-\cb3 # OS generated #\cb1 \
-\cb3 # ============ #\cb1 \
+\
 \cb3 .DS_Store\cb1 \
 \cb3 .DS_Store?\cb1 \
 \cb3 ._*\cb1 \
