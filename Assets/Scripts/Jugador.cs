@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -24,5 +25,13 @@ public class NewBehaviourScript : MonoBehaviour
             rigidbody2D.AddForce(new Vector2(0,fuerzaSalto));
         }
         
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Suelo")
+        {
+            animator.SetBool("Saltando",false);
+        }
     }
 }
