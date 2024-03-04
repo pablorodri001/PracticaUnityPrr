@@ -7,14 +7,19 @@ public class GameManager : MonoBehaviour
 {
     public GameObject column;
     public Renderer fondo;
+    public float velocidad = 2;
+
+    public List<GameObject> cols;
     // Start is called before the first frame update
     void Start()
     {
         for (int i = 0; i < 21; i++)
         {
-            Instantiate(column, new Vector2(-10 + i, -3), Quaternion.identity);
+           cols.Add(Instantiate(column, new Vector2(-10 + i, -3), Quaternion.identity));
+           
             
         }
+        
         
     }
 
@@ -23,5 +28,16 @@ public class GameManager : MonoBehaviour
     {
         fondo.material.mainTextureOffset=fondo.material.mainTextureOffset+new Vector2(0.03f,0)*Time.deltaTime;
         
+        
+        for (int i = 0; i < cols.Count; i++)
+        {
+            if (cols[i].transform.position.x <= -10)
+            {
+                cols[i].transform.position = new Vector3(10, -3, 0);
+            }
+            cols[i].transform.position = cols[i].transform.position + new Vector3(-1, 0, 0) * Time.deltaTime*velocidad;
+
+
+        }
     }
 }
