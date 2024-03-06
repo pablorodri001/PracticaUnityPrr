@@ -6,6 +6,7 @@ using UnityEngine;
 public class NewBehaviourScript : MonoBehaviour
 {
     public float fuerzaSalto;
+    public GameManager gameManager;
     private Rigidbody2D rigidbody2D;
     public Animator animator;
     // Start is called before the first frame update
@@ -32,6 +33,11 @@ public class NewBehaviourScript : MonoBehaviour
         if (collision.gameObject.tag == "Suelo")
         {
             animator.SetBool("Saltando",false);
+        }
+
+        if (collision.gameObject.tag == "obstaculo")
+        {
+            gameManager.gameOver = true;
         }
     }
 }
