@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 
 {
+    public GameObject menuPrincipal;
+    public GameObject menuGameOver;
     public GameObject column;
     public GameObject piedra1;
     public GameObject piedra2;
@@ -12,7 +15,7 @@ public class GameManager : MonoBehaviour
     public float velocidad = 2;
     public bool gameOver = false;
     public List<GameObject> cols;
-
+    public bool start = false;
     public List<GameObject> obs;
 
     // Start is called before the first frame update
@@ -35,34 +38,55 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        fondo.material.mainTextureOffset = fondo.material.mainTextureOffset + new Vector2(0.03f, 0) * Time.deltaTime;
-
-
-        for (int i = 0; i < cols.Count; i++)
+        if (start == false)
         {
-            if (cols[i].transform.position.x <= -10)
+            if (Input.GetKeyDown(KeyCode.Space))
             {
-                cols[i].transform.position = new Vector3(10, -3, 0);
+                start = true;
             }
-
-            cols[i].transform.position =
-                cols[i].transform.position + new Vector3(-1, 0, 0) * Time.deltaTime * velocidad;
-
-
         }
 
-        //mover Piedras
-        for (int i = 0; i < obs.Count; i++)
+        if (start == true && gameOver == true)
         {
-            if (obs[i].transform.position.x <= -10)
+            menuGameOver.SetActive(true);
+            if (Input.GetKeyDown(KeyCode.X))
             {
-                float randomObs = Random.Range(11, 18);
-                obs[i].transform.position = new Vector3(randomObs, -2, 0);
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            }
+        }
+        if (start == true && gameOver==false)
+        {
+            menuPrincipal.SetActive(false);
+            fondo.material.mainTextureOffset = fondo.material.mainTextureOffset + new Vector2(0.03f, 0) * Time.deltaTime;
+
+
+            for (int i = 0; i < cols.Count; i++)
+            {
+                if (cols[i].transform.position.x <= -10)
+                {
+                    cols[i].transform.position = new Vector3(10, -3, 0);
+                }
+
+                cols[i].transform.position =
+                    cols[i].transform.position + new Vector3(-1, 0, 0) * Time.deltaTime * velocidad;
+
+
             }
 
-            obs[i].transform.position = obs[i].transform.position + new Vector3(-1, 0, 0) * Time.deltaTime * velocidad;
+            //mover Piedras
+            for (int i = 0; i < obs.Count; i++)
+            {
+                if (obs[i].transform.position.x <= -10)
+                {
+                    float randomObs = Random.Range(11, 18);
+                    obs[i].transform.position = new Vector3(randomObs, -2, 0);
+                }
+
+                obs[i].transform.position = obs[i].transform.position + new Vector3(-1, 0, 0) * Time.deltaTime * velocidad;
 
 
+            }
+            
         }
     }
 }
