@@ -10,11 +10,14 @@ public class NewBehaviourScript : MonoBehaviour
     private Rigidbody2D rigidbody2D;
     public Animator animator;
     private bool saltando = false;
+
+    private AudioSource sonidoSalto;
     // Start is called before the first frame update
     void Start()
     {
         animator = GetComponent<Animator>();
         rigidbody2D = GetComponent<Rigidbody2D>();
+        sonidoSalto = GetComponent<AudioSource>();
 
     }
 
@@ -26,6 +29,7 @@ public class NewBehaviourScript : MonoBehaviour
             animator.SetBool("Saltando", true);
             rigidbody2D.AddForce(new Vector2(0, fuerzaSalto));
             saltando = true; // Establece la variable de salto en verdadero
+            sonidoSalto.Play();
         }
     }
 
