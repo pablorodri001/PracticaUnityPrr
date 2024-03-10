@@ -38,6 +38,12 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            // Salir del juego
+            UnityEditor.EditorApplication.isPlaying = false;
+        Application.Quit();
+        }
         if (start == false)
         {
             if (Input.GetKeyDown(KeyCode.Space))
@@ -79,12 +85,20 @@ public class GameManager : MonoBehaviour
                 if (obs[i].transform.position.x <= -10)
                 {
                     float randomObs = Random.Range(11, 18);
+        
+                    // Verificar que la nueva posición no esté demasiado cerca de la posición de las otras piedras
+                    foreach (var otherObs in obs)
+                    {
+                        if (Mathf.Abs(otherObs.transform.position.x - randomObs) < 2)
+                        {
+                            randomObs += 2; // Aumentar la posición para que haya suficiente espacio
+                        }
+                    }
+        
                     obs[i].transform.position = new Vector3(randomObs, -2, 0);
                 }
 
-                obs[i].transform.position = obs[i].transform.position + new Vector3(-1, 0, 0) * Time.deltaTime * velocidad;
-
-
+                obs[i].transform.position += new Vector3(-1, 0, 0) * Time.deltaTime * velocidad;
             }
             
         }
