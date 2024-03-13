@@ -46,7 +46,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets/Scripts/Jugador.cs" />
-    <Compile Include="Assets/puntuacion.cs" />
     <Compile Include="Assets/Scripts/GameManager.cs" />
     <Compile Include="Assets/MenuPausa.cs" />
     <None Include="Assets/TextMesh Pro/Shaders/TMPro.cginc" />
